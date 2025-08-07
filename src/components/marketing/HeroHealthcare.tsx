@@ -40,12 +40,12 @@ const HeroHealthcare = () => {
       <nav className="container flex items-center justify-between py-6">
         <a href="/" className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-lg bg-gradient-hero shadow-glow" aria-hidden />
-          <span className="text-lg font-semibold tracking-tight">Pega Blueprint for Healthcare</span>
+          <span className="text-lg font-semibold tracking-tight">Horsey WorkFlYo for Healthcare</span>
         </a>
         <div className="flex items-center gap-3">
           <Button variant="ghost">Solutions</Button>
           <Button variant="ghost">Customers</Button>
-          <Button variant="hero">Build a Blueprint</Button>
+          <Button variant="hero">Build a WorkFlYo</Button>
         </div>
       </nav>
 
@@ -61,14 +61,14 @@ const HeroHealthcare = () => {
             From prior authorization to care management, blueprint and launch secure, compliant processes fast—aligned to payer and provider best practices.
           </p>
           <div className="flex flex-wrap items-center gap-3">
-            <Button variant="hero" size="lg">Build your Blueprint</Button>
+            <Button variant="hero" size="lg">Build your WorkFlYo</Button>
             <Button variant="outline" size="lg">Watch demo</Button>
           </div>
         </div>
         <div className="relative">
           <img
             src={heroImage}
-            alt="Doctors collaborating on an AI-powered healthcare blueprint interface"
+            alt="Doctors collaborating on an AI-powered healthcare WorkFlYo interface"
             loading="lazy"
             className="mx-auto w-full max-w-2xl rounded-xl border shadow-xl"
           />
@@ -120,7 +120,7 @@ export const CTAHealthcare = () => (
     <div className="cta-panel">
       <div>
         <h3 className="text-2xl font-semibold md:text-3xl">Ready to transform member and patient journeys?</h3>
-        <p className="mt-2 max-w-2xl text-muted-foreground">Create your first healthcare Blueprint and see how fast you can go from idea to governed, production-ready workflows.</p>
+        <p className="mt-2 max-w-2xl text-muted-foreground">Create your first healthcare WorkFlYo and see how fast you can go from idea to governed, production-ready workflows.</p>
       </div>
       <div className="flex gap-3">
         <Button variant="hero" size="lg">Start now</Button>
