@@ -6,7 +6,7 @@ import { useRef, useEffect } from "react";
 import { Stethoscope, ShieldCheck, ActivitySquare, Play } from "lucide-react";
 const HeroHealthcare = () => {
   const glowRef = useRef<HTMLDivElement>(null);
-
+  const imageRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = glowRef.current;
     if (!el) return;
@@ -34,6 +34,23 @@ const HeroHealthcare = () => {
       el.removeEventListener("mouseleave", onLeave);
       el.removeEventListener("mouseenter", onEnter);
     };
+  }, []);
+
+  useEffect(() => {
+    const el = imageRef.current;
+    if (!el) return;
+    el.classList.add("animate-slide-in-right");
+    const onScroll = () => {
+      if (window.scrollY > 150) {
+        el.classList.remove("animate-slide-in-right");
+        el.classList.add("animate-slide-out-right");
+      } else {
+        el.classList.remove("animate-slide-out-right");
+        el.classList.add("animate-slide-in-right");
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true } as any);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
@@ -84,7 +101,7 @@ const HeroHealthcare = () => {
             </Dialog>
           </div>
         </div>
-        <div className="relative">
+        <div ref={imageRef} className="relative will-change-transform">
           <img
             src={heroImage}
             alt="Doctors collaborating on an AI-powered healthcare WorkFlYo interface"
