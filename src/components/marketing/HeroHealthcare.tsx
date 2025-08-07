@@ -1,8 +1,9 @@
 import heroImage from "@/assets/hero-healthcare.jpg";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { useRef, useEffect } from "react";
-import { Stethoscope, ShieldCheck, ActivitySquare } from "lucide-react";
-
+import { Stethoscope, ShieldCheck, ActivitySquare, Play } from "lucide-react";
 const HeroHealthcare = () => {
   const glowRef = useRef<HTMLDivElement>(null);
 
@@ -62,7 +63,25 @@ const HeroHealthcare = () => {
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <Button variant="hero" size="lg">Build your WorkFlYo</Button>
-            <Button variant="outline" size="lg">Watch demo</Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline" size="lg">Watch demo</Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-3xl">
+                <DialogHeader>
+                  <DialogTitle>WorkFlYo demo</DialogTitle>
+                  <DialogDescription>Placeholder video — coming soon.</DialogDescription>
+                </DialogHeader>
+                <AspectRatio ratio={16 / 9}>
+                  <div className="flex h-full w-full items-center justify-center rounded-md border bg-muted">
+                    <div className="flex flex-col items-center gap-2 text-muted-foreground">
+                      <Play className="h-12 w-12" aria-hidden />
+                      <span>Demo video placeholder</span>
+                    </div>
+                  </div>
+                </AspectRatio>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
         <div className="relative">
