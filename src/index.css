@@ -38,21 +38,26 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
+    /* Sidebar tokens */
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Healthcare brand tokens */
+    --brand-1: 192 95% 44%; /* teal */
+    --brand-2: 248 86% 64%; /* indigo */
+    --brand-foreground: 210 40% 98%;
+
+    /* Gradients & effects */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--brand-1)) 0%, hsl(var(--brand-2)) 100%);
+    --shadow-elegant: 0 16px 48px -18px hsl(var(--brand-2) / 0.35);
+    --shadow-glow: 0 0 48px hsl(var(--brand-1) / 0.45);
+    --transition-smooth: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
@@ -83,6 +88,7 @@ All colors MUST be HSL.
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -91,6 +97,10 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Dark tweaks */
+    --shadow-elegant: 0 16px 48px -18px hsl(var(--brand-2) / 0.5);
+    --shadow-glow: 0 0 48px hsl(var(--brand-1) / 0.6);
   }
 }
 
@@ -100,6 +110,46 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* Components and utilities bound to the design system */
+@layer components {
+  .bg-gradient-hero { background-image: var(--gradient-hero); }
+  .shadow-glow { box-shadow: var(--shadow-elegant); }
+  .shadow-glow-strong { box-shadow: var(--shadow-glow); }
+
+  .btn-hero {
+    background-image: var(--gradient-hero);
+    color: hsl(var(--brand-foreground));
+    transition: var(--transition-smooth);
+  }
+  .btn-hero:hover { filter: brightness(1.05); }
+
+  .pointer-glow { position: relative; }
+  .pointer-glow::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    pointer-events: none;
+    opacity: var(--glow-opacity, 1);
+    background: radial-gradient(400px circle at var(--pointer-x, 50%) var(--pointer-y, 50%), hsl(var(--brand-1) / 0.25), transparent 60%);
+    transition: opacity .3s ease;
+  }
+
+  .feature-card {
+    @apply relative rounded-xl border bg-card p-6 shadow-sm transition-transform hover:-translate-y-0.5;
+  }
+  .feature-icon {
+    @apply mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg border bg-secondary text-foreground shadow-sm;
+  }
+  .feature-title { @apply text-xl font-semibold; }
+  .feature-copy { @apply mt-2 text-muted-foreground; }
+
+  .cta-panel {
+    @apply flex flex-col items-start justify-between gap-6 rounded-2xl border p-8 md:flex-row;
+    background-image: linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%);
+    box-shadow: var(--shadow-elegant);
   }
 }
